@@ -81,7 +81,26 @@
             <span>Item número 2</span>
           </v-tab-item>-->
           <v-tab-item>
-            <span>Item número 3</span>
+            <v-data-table :headers="headersAulas" :items="aulas" class="elevation-1">
+              <template slot="headerCell" slot-scope="props">
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <span v-on="on">{{ props.header.text }}</span>
+                  </template>
+                  <span>{{ props.header.text }}</span>
+                </v-tooltip>
+              </template>
+              <template v-slot:items="props">
+                <td>{{ props.item.data }}</td>
+                <td>{{ props.item.hora }}</td>
+                <td>{{ props.item.conteudo }}</td>
+                <td>
+                  <v-btn @click="editClass(props.item.id)" color="rgb(166,166,166)" fab>
+                    <v-icon>edit</v-icon>
+                  </v-btn>
+                </td>
+              </template>
+            </v-data-table>
           </v-tab-item>
         </v-tabs>
       </v-flex>
@@ -97,10 +116,68 @@ export default {
       date: null,
       dateFormated: null,
       time: null,
-      showDatePicker: false
+      headersAulas: [
+        {
+          text: "Data",
+          align: "left",
+          sortable: false,
+          value: "data"
+        },
+        { text: "Hora", value: "hora" },
+        { text: "Conteúdo", value: "conteudo" },
+        { text: "", value: "", align: "left", sortable: false }
+      ],
+      aulas: [
+        {
+          id: 1,
+          data: "27/01/2020",
+          hora: "11:30",
+          conteudo:
+            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+        },
+        {
+          id: 2,
+          data: "27/01/2020",
+          hora: "12:30",
+          conteudo:
+            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+        },
+        {
+          id: 3,
+          data: "27/01/2020",
+          hora: "12:30",
+          conteudo:
+            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+        },
+        {
+          id: 4,
+          data: "27/01/2020",
+          hora: "12:30",
+          conteudo:
+            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+        },
+        {
+          id: 5,
+          data: "27/01/2020",
+          hora: "12:30",
+          conteudo:
+            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+        },
+        {
+          id: 6,
+          data: "27/01/2020",
+          hora: "12:30",
+          conteudo:
+            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+        }
+      ]
     };
   },
-  methods: {},
+  methods: {
+    editClass(e) {
+      alert(e);
+    }
+  },
   beforeMount() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, "0");
@@ -134,9 +211,14 @@ export default {
 .btn-save {
   border-radius: 20px;
   margin-right: 19%;
+  margin-top: 1%;
 }
 .btn-rounded {
   border-radius: 20px;
+}
+.btn-rounded-edit {
+  border-radius: 20px;
+  width: 1px;
 }
 .icon {
   margin-right: 5px;
@@ -162,4 +244,3 @@ export default {
   width: 100%;
 }
 </style>
-
