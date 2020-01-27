@@ -7,82 +7,159 @@
       <v-flex xs12>
         <span class="subheading">Selecione uma das opções abaixo</span>
       </v-flex>
-      <v-flex
-        shrink
-        v-for="card in cards"
-        :key="card.title"
-        justify-start
-      >
-        <v-hover>
-          <!--
-          <v-card width="150" height="150"
-            contain
-            @click="OnCards"
-            slot-scope="{ hover }"
-            :class="`elevation-${hover ? 12 : 2}`"
-          >
-            <v-layout justify-center row wrap fill-height>
-              <v-icon x-large>{{card.icon}}</v-icon>
-            </v-layout>
-            <v-layout text-xs-center>
-              <v-card-text>
-                <span class="body-2">{{card.title}}</span>
-              </v-card-text>
-            </v-layout>
-          </v-card>
-          -->
-          <v-card
-            contain
-            @click="OnCards"
-            slot-scope="{ hover }"
-            :class="`elevation-${hover ? 12 : 2}`"
-          >
-            <v-layout justify-start align-center ma-2>
-              <v-icon x-large>{{card.icon}}</v-icon>
-              <v-divider vertical></v-divider>
-              <span class="subheading">{{card.title}}</span>
-            </v-layout>
-          </v-card>
-        </v-hover>
+      <v-flex>
+        <v-tabs grow v-model="active" dark slider-color="white">
+          <v-tab>
+            <v-icon class="icon">list_alt</v-icon>Registrar aula regular
+          </v-tab>
+          <!-- <v-tab>
+            <v-icon class="icon">event</v-icon>Registrar aula extra
+          </v-tab>-->
+          <v-tab>
+            <v-icon class="icon">find_in_page</v-icon>Verificar registro de aulas
+          </v-tab>
+          <v-tab-item>
+            <v-flex class="div-primary">
+              <div class="div-menu-upper">
+                <div class="div-menu">
+                  <v-menu :close-on-content-click="false" transition="scale-transition" offset-x>
+                    <template v-slot:activator="{ on }">
+                      <h4>
+                        Selecione o dia da aula:
+                        <v-btn class="btn-rounded" v-on="on">{{dateFormated}}</v-btn>
+                      </h4>
+                    </template>
+                    <v-date-picker
+                      v-model="date"
+                      scrollable
+                      color="rgb(66,66,66)"
+                      reactive
+                      show-current
+                      first-day-of-week="0"
+                      locale="pt-br"
+                    ></v-date-picker>
+                  </v-menu>
+                </div>
+                <div class="div-menu">
+                  <v-menu :close-on-content-click="false" transition="scale-transition" offset-x>
+                    <template v-slot:activator="{ on }">
+                      <h4>
+                        Selecione o horário da aula:
+                        <v-btn class="btn-rounded" v-on="on">{{time}}</v-btn>
+                      </h4>
+                    </template>
+                    <v-time-picker
+                      v-model="time"
+                      scrollable
+                      color="rgb(66,66,66)"
+                      reactive
+                      show-current
+                    ></v-time-picker>
+                  </v-menu>
+                </div>
+              </div>
+              <v-divider></v-divider>
+              <div class="div-text-input">
+                <v-textarea
+                  label="Conteúdo da aula"
+                  auto-grow
+                  outlined
+                  rows="3"
+                  row-height="25"
+                  shaped
+                ></v-textarea>
+              </div>
+              <v-divider></v-divider>
+              <div>
+                <div class="div-btn-save">
+                  <v-btn class="btn-save">Salvar Aula</v-btn>
+                </div>
+              </div>
+            </v-flex>
+          </v-tab-item>
+          <!-- <v-tab-item>
+            <span>Item número 2</span>
+          </v-tab-item>-->
+          <v-tab-item>
+            <span>Item número 3</span>
+          </v-tab-item>
+        </v-tabs>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-
-
 export default {
-    name: 'Aulas',
-    data(){
-      return{
-        cards: [
-          { color: 'purple', title: 'Registrar aula regular', icon: 'list_alt'},
-          { color: 'blue', title: 'Registrar aula extra', icon: 'event'},
-          { color: 'red', title: 'Verificar registro de aulas', icon: 'find_in_page'},
-        ]
-      }
-    },
-    methods: {
-      OnCards(option){
-        console.log('deu');
-      }
+  name: "Aulas",
+  data() {
+    return {
+      date: null,
+      dateFormated: null,
+      time: null,
+      showDatePicker: false
+    };
+  },
+  methods: {},
+  beforeMount() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = String(today.getFullYear());
+    var hour = String(today.getHours()).padStart(2, "0");
+    var minutes = String(today.getMinutes()).padStart(2, "0");
+    this.date = yyyy + "-" + mm + "-" + dd;
+    this.time = hour + ":" + minutes;
+  },
+  watch: {
+    date: function() {
+      this.dateFormated = this.date
+        .split("-")
+        .reverse()
+        .join("/");
     }
-}
+  }
+};
 </script>
 
 <style scoped>
-.cards{
+.div-text-input {
+  margin-left: 13.3%;
+  margin-right: 19%;
+}
+.div-btn-save {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-save {
+  border-radius: 20px;
+  margin-right: 19%;
+}
+.btn-rounded {
+  border-radius: 20px;
+}
+.icon {
+  margin-right: 5px;
+}
+.cards {
   display: inline-block;
   justify-content: flex-start;
 }
-.v-card__text{
+.v-card__text {
   padding: 12px;
 }
-
-.test{
-  background-color: grey;
+.div-primary {
+  background-color: rgb(190, 190, 190);
 }
-
+.div-menu {
+  width: 30%;
+}
+.div-menu-upper {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  margin-bottom: 10px;
+  width: 100%;
+}
 </style>
 

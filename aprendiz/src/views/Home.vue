@@ -1,10 +1,10 @@
 <template>
-  <v-layout row wrap ma-3>  
+  <v-layout row wrap ma-3>
     <v-layout ml-3 column wrap>
       <span class="display-1">Dia {{date}}</span>
       <v-layout row wrap align-start>
         <div class="mr-3">
-          <span class="headline"> Próxima aula: </span>
+          <span class="headline">Próxima aula:</span>
         </div>
         <v-card width="300">
           <v-layout row wrap ml-1 mr-1>
@@ -16,7 +16,7 @@
               <span class="body-2">Dia: 10/08/2019</span>
               <span class="body-2">Horário: 08:50</span>
             </v-layout>
-            <v-divider vertical/>
+            <v-divider vertical />
             <v-layout shrink align-center pl-1>
               <v-icon large>pageview</v-icon>
             </v-layout>
@@ -24,34 +24,34 @@
         </v-card>
       </v-layout>
     </v-layout>
-    <v-divider vertical/>
-    <Quicksearch/>
+    <v-divider vertical />
+    <Quicksearch />
     <!-- <v-layout wrap ma-1>
-    </v-layout> -->
+    </v-layout>-->
   </v-layout>
 </template>
 
 <script>
-  import Quicksearch from '../components/Quicksearch';
+import Quicksearch from "../components/Quicksearch";
 
-  export default {
-    name: 'Home',
-    components: {
-      Quicksearch
+export default {
+  name: "Home",
+  components: {
+    Quicksearch
+  },
+  methods: {
+    getDate() {
+      return new Date().toLocaleDateString("pt-br");
     },
-    methods: {
-      getDate(){
-        return new Date().toLocaleDateString('pt-br');
-      },
-      log(){
-        console.log('a');
-      }
-    },
-    data(){
-      return{
-        date: '',
-        nextClass: ''
-        /* headers: [
+    log() {
+      console.log("a");
+    }
+  },
+  data() {
+    return {
+      date: "",
+      nextClass: ""
+      /* headers: [
           { text: 'Matricula', value: 'matricula'},
           { text: 'Aluno', value: 'nome'},
           { text: 'Idade', value: 'idade'},
@@ -63,10 +63,10 @@
           { nome: 'junior', idade: 11, matricula: 2, faltas: 0 },
           { nome: 'ellen', idade: 17, matricula: 3, faltas: 2 }
         ] */
-      }
-    },
-    created(){
-      this.date = this.getDate();
-    }
+    };
+  },
+  created() {
+    this.date = this.getDate();
   }
+};
 </script>
