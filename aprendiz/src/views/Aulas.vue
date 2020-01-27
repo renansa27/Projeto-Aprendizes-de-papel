@@ -175,7 +175,11 @@ export default {
   },
   methods: {
     editClass(e) {
-      alert(e);
+      this.aulas.forEach(aula => {
+        if (aula.id == e) {
+          aula.conteudo = "Mudou o conteúdo!";
+        }
+      });
     }
   },
   beforeMount() {
