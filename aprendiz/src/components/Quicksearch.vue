@@ -103,14 +103,12 @@ export default {
     alunos: [
       { id: 0, nome: "Renan Sá Cavalcante", faltas: 3 },
       { id: 1, nome: "Rodrigo Sá Cavalcante", faltas: 4 },
-      { id: 2, nome: "Thaís Sá Cavalcante", faltas: 5 },
-      { id: 3, nome: "Suelen", faltas: 5 }
+      { id: 2, nome: "Thaís Sá Cavalcante", faltas: 5 }
     ],
     professores: [
       { id: 0, nome: "Renan Sá Cavalcante", materia: "Matemática" },
       { id: 1, nome: "Rodrigo Sá Cavalcante", materia: "Física" },
-      { id: 2, nome: "Thaís Sá Cavalcante", materia: "Química" },
-      { id: 3, nome: "Suelen", materia: "Biologia" }
+      { id: 2, nome: "Thaís Sá Cavalcante", materia: "Química" }
     ],
     aulas: [
       { id: 0, nome: "Matemátiva" },

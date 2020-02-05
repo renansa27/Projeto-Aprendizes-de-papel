@@ -8,7 +8,7 @@
         <span class="subheading">Selecione uma das opções abaixo</span>
       </v-flex>
       <v-flex>
-        <v-tabs grow v-model="active" dark slider-color="white">
+        <v-tabs grow dark slider-color="white">
           <v-tab>
             <v-icon class="icon">list_alt</v-icon>Registrar aula regular
           </v-tab>
@@ -95,9 +95,10 @@
                 <td>{{ props.item.hora }}</td>
                 <td>{{ props.item.conteudo }}</td>
                 <td>
-                  <v-btn @click="editClass(props.item.id)" color="rgb(166,166,166)" fab>
+                  <!-- <v-btn @click="editClass(props.item.id)" color="rgb(166,166,166)" fab>
                     <v-icon>edit</v-icon>
-                  </v-btn>
+                  </v-btn>-->
+                  <EditButton />
                 </td>
               </template>
             </v-data-table>
@@ -109,8 +110,13 @@
 </template>
 
 <script>
+import EditButton from "./EditButton";
+
 export default {
   name: "Aulas",
+  components: {
+    EditButton
+  },
   data() {
     return {
       date: null,
@@ -175,11 +181,12 @@ export default {
   },
   methods: {
     editClass(e) {
+      /* console.log("Valor do evento: ", e);
       this.aulas.forEach(aula => {
         if (aula.id == e) {
           aula.conteudo = "Mudou o conteúdo!";
         }
-      });
+      }); */
     }
   },
   beforeMount() {
