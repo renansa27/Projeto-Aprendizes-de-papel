@@ -135,7 +135,7 @@ export default {
       ],
       aulas: [
         {
-          id: 1,
+          id: 10,
           data: "27/01/2020",
           hora: "11:30",
           conteudo:
@@ -181,8 +181,8 @@ export default {
   },
   methods: {
     editClass(e) {
-      /* console.log("Valor do evento: ", e);
-      this.aulas.forEach(aula => {
+      console.log("Valor do evento: ", e);
+      /* this.aulas.forEach(aula => {
         if (aula.id == e) {
           aula.conteudo = "Mudou o conteúdo!";
         }

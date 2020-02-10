@@ -1,11 +1,17 @@
 <template>
   <v-app>
     <Globaltoolbar :clipped="drawer" @openDrawer="drawer = !drawer" />
-    <Globaldrawer :drawer="drawer" />
-    <v-content>
-      <Globalheadline />
-      <router-view></router-view>
-    </v-content>
+    <div class="content">
+      <!-- A fazer a classe content -->
+      <Globaldrawer :drawer="drawer" />
+      <v-content>
+        <div class="headContent">
+          <Globalheadline />
+        </div>
+        <v-divider />
+        <router-view></router-view>
+      </v-content>
+    </div>
   </v-app>
 </template>
 
@@ -36,3 +42,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.headContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

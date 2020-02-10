@@ -1,5 +1,5 @@
 <template>
-  <v-row name="row" justify="center">
+  <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="800px">
       <template v-slot:activator="{ on }">
         <v-btn color="rgb(166,166,166)" fab v-on="on">
@@ -11,10 +11,8 @@
           <div class="div-menu">
             <v-menu :close-on-content-click="false" transition="scale-transition" offset-x>
               <template v-slot:activator="{ on }">
-                <h4>
-                  Selecione o dia da aula:
-                  <v-btn class="btn-rounded" v-on="on">{{dateFormated}}</v-btn>
-                </h4>
+                Selecione o dia da aula:
+                <v-btn class="btn-rounded" v-on="on">{{dateFormated}}</v-btn>
               </template>
               <v-date-picker
                 v-model="date"
@@ -46,7 +44,8 @@
         <v-divider></v-divider>
         <div>
           <div class="div-btn-save">
-            <v-btn @click="dialog=false" class="btn-save">Salvar Aula</v-btn>
+            <v-btn @click="dialog=false" class="btn-save">Cancelar</v-btn>
+            <v-btn @click="dialog=false" class="btn-save">Salvar</v-btn>
           </div>
         </div>
       </v-flex>
@@ -94,7 +93,7 @@ export default {
 }
 .btn-save {
   border-radius: 20px;
-  margin-right: 19%;
+  margin-right: 5%;
   margin-top: 1%;
 }
 .btn-rounded {
@@ -119,14 +118,13 @@ export default {
 }
 .div-menu {
   margin-top: 20px;
+  display: inline-flex;
+  justify-content: center;
   margin-bottom: 20px;
-  width: 30%;
+  width: 100%;
 }
 .div-menu-upper {
   display: inline-flex;
-  justify-content: space-evenly;
-  align-items: stretch;
-  margin-bottom: 10px;
   width: 100%;
 }
 </style>

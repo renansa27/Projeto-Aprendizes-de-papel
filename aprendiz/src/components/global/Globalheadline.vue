@@ -4,30 +4,29 @@
       <span class="display-2">{{currentRoute}}</span>
     </v-layout>
     <v-layout row>
-      <v-divider/>
+      <!-- <v-divider /> -->
     </v-layout>
   </div>
-
 </template>
 
 <script>
 export default {
-  name: 'Globalheadline',
+  name: "Globalheadline",
   methods: {
-    getRouteName(route){
+    getRouteName(route) {
       this.currentRoute = route.name;
     }
   },
   data: () => ({
-    currentRoute: ''
+    currentRoute: ""
   }),
-  mounted(){
+  mounted() {
     this.getRouteName(this.$route);
   },
-  watch:{
-    $route: function(val){
+  watch: {
+    $route: function(val) {
       this.getRouteName(val);
     }
   }
-}
+};
 </script>
