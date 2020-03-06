@@ -98,7 +98,13 @@
                   <!-- <v-btn @click="editClass(props.item.id)" color="rgb(166,166,166)" fab>
                     <v-icon>edit</v-icon>
                   </v-btn>-->
-                  <EditButton />
+                  <EditButton :objectAula="props.item" />
+                </td>
+                <td>
+                  <!-- <v-btn @click="editClass(props.item.id)" color="rgb(166,166,166)" fab>
+                    <v-icon>edit</v-icon>
+                  </v-btn>-->
+                  <RemoveButton :objectAula="props.item" />
                 </td>
               </template>
             </v-data-table>
@@ -110,12 +116,15 @@
 </template>
 
 <script>
+import barramento from "@/barramento";
 import EditButton from "./EditButton";
+import RemoveButton from "./RemoveButton";
 
 export default {
   name: "Aulas",
   components: {
-    EditButton
+    EditButton,
+    RemoveButton
   },
   data() {
     return {
@@ -131,63 +140,64 @@ export default {
         },
         { text: "Hora", value: "hora" },
         { text: "Conteúdo", value: "conteudo" },
+        { text: "", value: "", align: "left", sortable: false },
         { text: "", value: "", align: "left", sortable: false }
       ],
       aulas: [
         {
-          id: 10,
+          id: 1,
           data: "27/01/2020",
           hora: "11:30",
           conteudo:
-            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+            "Adição, subtração, divisão, multiplicação, frações, racionalização 1"
         },
         {
           id: 2,
           data: "27/01/2020",
           hora: "12:30",
           conteudo:
-            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+            "Adição, subtração, divisão, multiplicação, frações, racionalização 2"
         },
         {
           id: 3,
           data: "27/01/2020",
           hora: "12:30",
           conteudo:
-            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+            "Adição, subtração, divisão, multiplicação, frações, racionalização 3"
         },
         {
           id: 4,
           data: "27/01/2020",
           hora: "12:30",
           conteudo:
-            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+            "Adição, subtração, divisão, multiplicação, frações, racionalização 4"
         },
         {
           id: 5,
           data: "27/01/2020",
           hora: "12:30",
           conteudo:
-            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+            "Adição, subtração, divisão, multiplicação, frações, racionalização 5"
         },
         {
           id: 6,
           data: "27/01/2020",
           hora: "12:30",
           conteudo:
-            "Adição, subtração, divisão, multiplicação, frações, racionalização"
+            "Adição, subtração, divisão, multiplicação, frações, racionalização 6"
         }
       ]
     };
   },
   methods: {
-    editClass(e) {
+    /* editClass(e) {
       console.log("Valor do evento: ", e);
-      /* this.aulas.forEach(aula => {
+      this.aulas.forEach(aula => {
         if (aula.id == e) {
           aula.conteudo = "Mudou o conteúdo!";
         }
-      }); */
-    }
+      });
+    } */
   },
   beforeMount() {
     var today = new Date();
@@ -198,6 +208,34 @@ export default {
     var minutes = String(today.getMinutes()).padStart(2, "0");
     this.date = yyyy + "-" + mm + "-" + dd;
     this.time = hour + ":" + minutes;
+  },
+  created() {
+    barramento.$on("aulaEvent", (objectAula, datePicker) => {
+      this.aulas.forEach(aula => {
+        if (aula.id == objectAula.id) {
+          aula.data = datePicker
+            .split("-")
+            .reverse()
+            .join("/");
+          aula.hora = objectAula.hora;
+          aula.conteudo = objectAula.conteudo;
+          /**********************************/
+          //Atualizar no banco quando tiver
+          /**********************************/
+        }
+      });
+    }),
+      barramento.$on("removeAula", objectAula => {
+        //console.log(this.aulas);
+        for (let i = 0; i < this.aulas.length; i++) {
+          if (objectAula.id == this.aulas[i].id) {
+            this.aulas.splice(i, 1);
+          }
+        }
+        /**********************************/
+        //Atualizar no banco quando tiver
+        /**********************************/
+      });
   },
   watch: {
     date: function() {

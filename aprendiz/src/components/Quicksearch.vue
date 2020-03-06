@@ -1,18 +1,18 @@
 <template>
   <v-layout row wrap ml-1>
-    <v-tabs grow @change="mudaMessage" v-model="active" dark slider-color="brown">
+    <v-tabs grow v-model="active" dark slider-color="brown">
       <!-- <v-tabs class="Vtabs" @change="mudaMessage" v-model="active" dark slider-color="brown"> -->
       <v-tab>Alunos</v-tab>
       <v-tab>Professores</v-tab>
       <!-- <v-tab>Últimas aulas</v-tab> -->
       <!-- <div class="divTxtField"> -->
-      <v-text-field
+      <!-- <v-text-field
         class="textField"
         v-model="content"
         prepend-inner-icon="search"
         :label="message"
         @input="search"
-      ></v-text-field>
+      ></v-text-field>-->
       <!-- </div> -->
       <v-tab-item>
         <!-- <div class="divCard">
@@ -103,7 +103,16 @@ export default {
     alunos: [
       { id: 0, nome: "Renan Sá Cavalcante", faltas: 3 },
       { id: 1, nome: "Rodrigo Sá Cavalcante", faltas: 4 },
-      { id: 2, nome: "Thaís Sá Cavalcante", faltas: 5 }
+      { id: 2, nome: "Thaís Sá Cavalcante", faltas: 5 },
+      { id: 3, nome: "Renan Sá Cavalcante", faltas: 3 },
+      { id: 4, nome: "Rodrigo Sá Cavalcante", faltas: 4 },
+      { id: 5, nome: "Thaís Sá Cavalcante", faltas: 5 },
+      { id: 6, nome: "Renan Sá Cavalcante", faltas: 3 },
+      { id: 7, nome: "Rodrigo Sá Cavalcante", faltas: 4 },
+      { id: 8, nome: "Thaís Sá Cavalcante", faltas: 5 },
+      { id: 9, nome: "Renan Sá Cavalcante", faltas: 3 },
+      { id: 10, nome: "Rodrigo Sá Cavalcante", faltas: 4 },
+      { id: 11, nome: "Thaís Sá Cavalcante", faltas: 5 }
     ],
     professores: [
       { id: 0, nome: "Renan Sá Cavalcante", materia: "Matemática" },
@@ -145,8 +154,8 @@ export default {
         default:
           break;
       }
-    },
-    isPar(aluno, index) {
+    }
+    /* isPar(aluno, index) {
       if (aluno.nome == this.alunos[index].nome) {
         if (index % 2 == 0) {
           return true;
@@ -154,7 +163,7 @@ export default {
           return false;
         }
       }
-    }
+    } */
   },
   beforMount() {}
 };

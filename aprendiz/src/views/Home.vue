@@ -1,24 +1,24 @@
 <template>
   <v-layout row wrap ma-3>
-    <v-layout ml-5 column wrap>
-      <div class="rowDay">
+    <v-layout xs column wrap>
+      <v-layout justify-center>
         <span class="display-1">Dia {{date}}</span>
+      </v-layout>
+      <v-layout justify-center>
+        <span class="headline">Aulas do dia:</span>
+      </v-layout>
+      <div class="rowDay">
         <div class="tamSelect">
-          <v-select :items="ano" label="Ano"></v-select>
+          <v-select :items="ano" v-model="selectedAno" label="Ano"></v-select>
         </div>
         <div class="tamSelect">
-          <v-select :items="turma" label="Turma"></v-select>
+          <v-select :items="turma" v-model="selectedTurma" label="Turma"></v-select>
         </div>
-        <div></div>
-        <div></div>
       </div>
-      <v-layout mt-4 row wrap align-start>
-        <div class="mr-3">
-          <span class="headline">Aulas do dia:</span>
-        </div>
-        <v-col>
-          <v-card v-for="(aula, index) in aulas" :key="aula" width="300">
-            <v-layout row wrap mb-2 ml-1 mr-1>
+      <v-layout mt-4 row wrap align-start justify-center>
+        <v-col cols="12">
+          <v-card v-for="(aula, index) in aulas" :key="index" width="300">
+            <v-layout row wrap mb-2>
               <v-layout column wrap>
                 <span class="body-2">Aula nº{{index+1}}: {{aula.materia}}</span>
                 <span class="body-2">Professor(a): {{aula.professor}}</span>
@@ -53,6 +53,8 @@ export default {
     return {
       date: "",
       nextClass: "",
+      selectedAno: "1º EF ",
+      selectedTurma: "A",
       ano: [
         "1º EF ",
         "2º EF",
@@ -127,12 +129,13 @@ export default {
 <style scoped>
 .tamSelect {
   padding-right: 10px;
-  width: 100px;
+  width: 150px;
 }
 .rowDay {
+  /* margin-top: 20px; */
   display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
+  /* align-items: center; */
+  justify-content: center;
 }
 .quickSearch {
   justify-content: center;
