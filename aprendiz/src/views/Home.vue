@@ -1,9 +1,9 @@
 <template>
   <v-layout row wrap ma-3>
     <v-layout xs column wrap>
-      <v-layout justify-center>
+      <!-- <v-layout justify-center>
         <span class="display-1">Dia {{date}}</span>
-      </v-layout>
+      </v-layout>-->
       <v-layout justify-center>
         <span class="headline">Aulas do dia:</span>
       </v-layout>
@@ -119,10 +119,10 @@ export default {
     getDate() {
       return new Date().toLocaleDateString("pt-br");
     }
-  },
-  created() {
-    this.date = this.getDate();
   }
+  /* created() {
+    this.date = this.getDate();
+  } */
 };
 </script>
 

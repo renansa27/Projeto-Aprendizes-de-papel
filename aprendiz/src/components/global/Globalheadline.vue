@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout row ma-2>
-      <span class="display-2">{{currentRoute}}</span>
+      <span class="display-2">{{`${currentRoute} - ${date}`}}</span>
     </v-layout>
     <v-layout row>
       <!-- <v-divider /> -->
@@ -18,7 +18,8 @@ export default {
     }
   },
   data: () => ({
-    currentRoute: ""
+    currentRoute: "",
+    date: null
   }),
   mounted() {
     this.getRouteName(this.$route);
@@ -27,6 +28,9 @@ export default {
     $route: function(val) {
       this.getRouteName(val);
     }
+  },
+  created() {
+    this.date = new Date().toLocaleDateString("pt-br");
   }
 };
 </script>
