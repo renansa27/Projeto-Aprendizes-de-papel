@@ -14,6 +14,9 @@
         <div class="tamSelect">
           <v-select :items="turma" v-model="selectedTurma" label="Turma"></v-select>
         </div>
+        <div class="tamSelect">
+          <v-select :items="turno" v-model="selectedTurno" label="Turno"></v-select>
+        </div>
       </div>
       <v-layout mt-4 row wrap align-start justify-center>
         <v-col cols="12">
@@ -55,6 +58,8 @@ export default {
       nextClass: "",
       selectedAno: "1º EF ",
       selectedTurma: "A",
+      selectedTurno: "M",
+      turno: ["M", "T"],
       ano: [
         "1º EF ",
         "2º EF",
@@ -129,7 +134,7 @@ export default {
 <style scoped>
 .tamSelect {
   padding-right: 10px;
-  width: 150px;
+  width: 100px;
 }
 .rowDay {
   /* margin-top: 20px; */

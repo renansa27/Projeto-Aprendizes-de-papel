@@ -270,7 +270,7 @@ export default {
   width: 1px;
 }
 .icon {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .cards {
   display: inline-block;

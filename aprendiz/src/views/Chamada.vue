@@ -9,6 +9,9 @@
           <div class="tamSelect">
             <v-select :items="turma" v-model="selectedTurma" label="Turma"></v-select>
           </div>
+          <div class="tamSelect">
+            <v-select :items="turno" v-model="selectedTurno" label="Turno"></v-select>
+          </div>
         </div>
         <v-data-table hide-actions :headers="headersAlunos" :items="alunos" class="elevation-1">
           <template slot="headerCell" slot-scope="props">
@@ -20,7 +23,7 @@
             </v-tooltip>
           </template>
           <template v-slot:items="props">
-            <td>{{ props.item.id }}</td>
+            <!-- <td>{{ props.item.id }}</td> -->
             <td>{{ props.item.nome }}</td>
             <td>{{ props.item.matricula }}</td>
             <td>{{ props.item.faltas }}</td>
@@ -31,7 +34,9 @@
             </td>
           </template>
         </v-data-table>
-        <v-btn>Save</v-btn>
+        <div class="saveBtn">
+          <v-btn class="btn-save">Save</v-btn>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -44,6 +49,8 @@ export default {
     return {
       selectedAno: "1º EF ",
       selectedTurma: "A",
+      selectedTurno: "M",
+      turno: ["M", "T"],
       ano: [
         "1º EF ",
         "2º EF",
@@ -146,12 +153,12 @@ export default {
         }
       ],
       headersAlunos: [
-        {
+        /* {
           text: "ID",
           align: "left",
           sortable: false,
           value: "id"
-        },
+        }, */
         { text: "Nome", value: "nome", sortable: false },
         { text: "Matrícula", value: "matricula", sortable: false },
         { text: "Faltas", value: "faltas", sortable: false },
@@ -174,5 +181,14 @@ export default {
 .rowDay {
   display: flex;
   justify-content: center;
+}
+.saveBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-save {
+  border-radius: 20px;
+  margin-right: 17%;
+  margin-top: 3%;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar app absolute :clipped-left="clipped">
+  <v-toolbar app :clipped-left="clipped">
     <v-toolbar-side-icon @click.stop="openDrawer"></v-toolbar-side-icon>
     <v-toolbar-title>Aprendizes de papel</v-toolbar-title>
     <v-spacer />

@@ -1,9 +1,13 @@
 <template>
-  <v-layout row wrap ml-1>
+  <v-layout row wrap ml-1 mt-3>
     <v-tabs grow v-model="active" dark slider-color="brown">
       <!-- <v-tabs class="Vtabs" @change="mudaMessage" v-model="active" dark slider-color="brown"> -->
-      <v-tab>Alunos</v-tab>
-      <v-tab>Professores</v-tab>
+      <v-tab>
+        <v-icon class="icon">person</v-icon>Alunos
+      </v-tab>
+      <v-tab>
+        <v-icon class="icon">school</v-icon>Professores
+      </v-tab>
       <!-- <v-tab>Últimas aulas</v-tab> -->
       <!-- <div class="divTxtField"> -->
       <!-- <v-text-field
@@ -191,5 +195,8 @@ export default {
 }
 .card {
   margin-top: 3px;
+}
+.icon {
+  margin-right: 10px;
 }
 </style>
