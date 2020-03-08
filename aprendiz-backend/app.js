@@ -3,7 +3,7 @@ const express = require('express');
 //Rotas
 const router = express.Router();
 router.get("/", (req, res) => {
-    res.send("Olá Mundo!");
+    res.send("Olá Mundo! 2.0");
 });
 
 //Configurações
