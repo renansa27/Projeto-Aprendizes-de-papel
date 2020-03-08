@@ -1,0 +1,16 @@
+{
+  "name": "res-server",
+  "version": "1.0.0",
+  "description": "Servidor do Sistema RSE",
+  "scripts": {
+    "start": "nodemon ./server.js"
+  },
+  "author": "Renan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

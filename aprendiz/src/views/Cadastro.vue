@@ -81,16 +81,16 @@
               ></v-select>
             </div>
           </div>
-          <div class="div-btn">
-            <v-btn color="error" class="mr-2" @click="remove">Excluir</v-btn>
-            <!-- <v-btn color="warning" @click="update">Editar</v-btn> -->
-            <v-btn color="success" class="mr-4" @click="save">Salvar</v-btn>
-          </div>
         </v-form>
       </v-tab-item>
       <v-tab-item></v-tab-item>
       <v-tab-item></v-tab-item>
     </v-tabs>
+          <div class="div-btn">
+            <v-btn color="error" class="mr-2" @click="remove">Excluir</v-btn>
+            <!-- <v-btn color="warning" @click="update">Editar</v-btn> -->
+            <v-btn color="success" class="mr-4" @click="save">Salvar</v-btn>
+          </div>
   </v-container>
 </template>
 
