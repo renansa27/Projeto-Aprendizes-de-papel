@@ -1,5 +1,5 @@
+//Dependencies => mongoose, dotenv
 const app = require("./app");
-
 require('dotenv').config({ path: "variables.env" });
 const mongoose = require("mongoose");
 

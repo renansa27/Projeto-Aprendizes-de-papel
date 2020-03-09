@@ -1,13 +1,11 @@
 const express = require('express');
+const router = require('./routes/index');
 
-//Rotas
-const router = express.Router();
-router.get("/", (req, res) => {
-    res.send("Olá Mundo! 2.0");
-});
-
-//Configurações
+//Settings
 const app = express();
 app.use("/", router);
+
+//Tratamento de requisições via POST
+app.use(express.json());
 
 module.exports = app;
