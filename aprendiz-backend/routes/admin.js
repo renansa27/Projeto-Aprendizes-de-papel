@@ -1,8 +1,7 @@
 const express = require('express');
+const admin = require('../controllers/adminController');
 
 const router = express.Router();
-router.get("/", (req, res) => {
-    res.send("Resposta para requisição admin");
-});
+router.get("/", admin.adminHome);
 
 module.exports = router;

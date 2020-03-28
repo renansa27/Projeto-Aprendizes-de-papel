@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Cadastro from './views/Cadastro'
+import CadastroAluno from './views/Cadastro/aluno'
+import CadastroProfessor from './views/Cadastro/professor'
+import CadastroFuncionario from './views/Cadastro/funcionario'
 import Chamada from './views/Chamada'
 import Aulas from './views/Aulas'
 
@@ -22,11 +24,23 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import('./views/About.vue')
     },
+    //Cadastro (Alunos, Professores e funcionários)
     {
-      path: '/cadastro',
-      name: 'Cadastro',
-      component: () => import('./views/Cadastro.vue')
+      path: '/cadastro/aluno',
+      name: 'Cadastro aluno',
+      component: () => import('./views/Cadastro/aluno')
     },
+    {
+      path: '/cadastro/professor',
+      name: 'Cadastro professor',
+      component: () => import('./views/Cadastro/professor')
+    },
+    {
+      path: '/cadastro/funcionario',
+      name: 'Cadastro funcionário',
+      component: () => import('./views/Cadastro/funcionario')
+    },
+    //********************/
     {
       path: '/chamada',
       name: 'Chamada',

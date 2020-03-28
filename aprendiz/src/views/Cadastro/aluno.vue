@@ -86,11 +86,11 @@
       <v-tab-item></v-tab-item>
       <v-tab-item></v-tab-item>
     </v-tabs>
-          <div class="div-btn">
-            <v-btn color="error" class="mr-2" @click="remove">Excluir</v-btn>
-            <!-- <v-btn color="warning" @click="update">Editar</v-btn> -->
-            <v-btn color="success" class="mr-4" @click="save">Salvar</v-btn>
-          </div>
+    <div class="div-btn">
+      <v-btn color="error" class="mr-2" @click="remove">Excluir</v-btn>
+      <!-- <v-btn color="warning" @click="update">Editar</v-btn> -->
+      <v-btn color="success" class="mr-4" @click="save">Salvar</v-btn>
+    </div>
   </v-container>
 </template>
 
@@ -112,6 +112,8 @@ export default {
     sexos: ["Masculino", "Feminino"],
     turno: ["M", "T"],
     ano: [
+      "Creche",
+      "Pré-Escola",
       "1º EF ",
       "2º EF",
       "3º EF",

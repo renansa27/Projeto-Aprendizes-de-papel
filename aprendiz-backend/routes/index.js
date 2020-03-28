@@ -1,4 +1,8 @@
 const express = require('express');
+const homeController = require('../controllers/homeController');
+const userController = require('../controllers/userController');
+const alunoController = require('../controllers/alunoController');
+const adminRoute = require('./admin');
 
 // GET: req.query
 // POST: req.body
@@ -6,20 +10,26 @@ const express = require('express');
 
 // SEND: res.send
 // JSON: res.json
-
 const router = express.Router();
-router.get("/", (req, res) => {
-    res.send("Olá Mundo! 2.0");
-});
 
-//localhost:7777/posts/1
-router.get("/posts/:id", (req, res) => {
-    let id = req.params.id;
-    res.send("ID do post: " + id);
-});
+router.get("/", homeController.index);
 
-router.get('/sobre', (req, res) => {
-    res.send("Página SOBRE!");
-})
+router.get("/admin", adminRoute);
+
+router.get("/showName", userController.showName);
+
+router.get("/users/login", userController.login);
+
+//ROTA ALUNOS
+
+router.post("/alunos/addAluno", alunoController.addAluno);
+
+router.get("/alunos/getAllAlunos", alunoController.getAllAlunos);
+
+router.get("/alunos/getOneAluno", alunoController.getOneAluno);
+
+router.put("/alunos/updateAluno", alunoController.updateAluno);
+
+router.delete("/alunos/deleteAluno", alunoController.deleteAluno);
 
 module.exports = router;
