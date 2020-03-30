@@ -50,6 +50,11 @@ export default new Router({
       path: '/aulas',
       name: 'Aulas',
       component: () => import('./views/Aulas.vue')
+    },
+    {
+      path: '/financas',
+      name: 'Finanças',
+      component: () => import('./views/financas.vue')
     }
   ]
 })

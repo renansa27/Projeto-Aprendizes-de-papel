@@ -7,5 +7,5 @@ exports.userMiddleware = (req, res, next) => {
 }
 
 exports.index = (req, res) => {
-    res.send("Olá, seja bem vindo ao sistema de escolas!");
+    res.send("Olá, seja bem vindo ao sistema de escolas com CORS!");
 }

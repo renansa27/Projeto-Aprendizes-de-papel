@@ -74,7 +74,7 @@ export default {
         {
           title: "Criar cadastro",
           icon: "assignment_ind",
-          active: true,
+          active: false,
           routes: [
             {
               title: "Criar aluno",
@@ -92,6 +92,12 @@ export default {
               route: "/cadastro/funcionario"
             }
           ]
+        },
+        {
+          title: "Finanças",
+          active: true,
+          icon: "attach_money",
+          route: "/financas"
         }
         /*         {
           title: "Criar cadastro",

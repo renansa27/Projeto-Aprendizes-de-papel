@@ -6,13 +6,13 @@ exports.addProfessor = (req, res, next) => {
         //Dados Pessoais
         nome: req.body.nome,
         nascimento: req.body.nascimento,
+        idade: req.body.idade,
         nacionalidade: req.body.nacionalidade,
         cidadeNascimento: req.body.cidadeNascimento,
-        ufNascimento: req.body.ufNascimento,
-        cpf: req.body.cpf,
-        tipoSanguineo: req.body.tipoSanguineo,
-        idade: req.body.idade,
         sexo: req.body.sexo,
+        ufNascimento: req.body.ufNascimento,
+        tipoSanguineo: req.body.tipoSanguineo,
+        cpf: req.body.cpf,
 
         //Dados RG
         rg: req.body.rg,
@@ -51,7 +51,6 @@ exports.addProfessor = (req, res, next) => {
         turmas: req.body.turmas,
         materia: req.body.materia
 
-
     }, (err, professor) => {
         if (err)
             return res.status(500).json({ message: 'Erro ao criar professor', error: err })
@@ -67,7 +66,7 @@ exports.addProfessor = (req, res, next) => {
 }
 
 //GET
-exports.getAllProfessors = (req, res, next) => {
+exports.getAllProfessores = (req, res, next) => {
     professorDAO.find().exec((err, professorList) => {
         if (err)
             return res.status(500).json({ error: err })

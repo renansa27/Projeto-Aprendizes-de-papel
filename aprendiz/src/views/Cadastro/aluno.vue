@@ -2,14 +2,18 @@
   <v-container>
     <v-tabs grow dark slider-color="white">
       <v-tab>
-        <v-icon class="icon">person</v-icon>Registrar aluno
+        <v-icon class="icon">person</v-icon>Dados do aluno
       </v-tab>
       <v-tab>
-        <v-icon class="icon">people_alt</v-icon>Registrar responsáveis
+        <v-icon class="icon">people_alt</v-icon>Dados dos responsáveis
       </v-tab>
       <v-tab>
         <v-icon class="icon">contact_phone</v-icon>Endereço e Contato
       </v-tab>
+      <v-tab>
+        <v-icon class="icon">attach_money</v-icon>Financeiro
+      </v-tab>
+
       <v-tab-item>
         <v-form ref="form">
           <div class="div-primary">
