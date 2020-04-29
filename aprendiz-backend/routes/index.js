@@ -9,6 +9,11 @@ const adminRoute = require('./admin');
 
 const cors = require('cors');
 
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 // GET: req.query
 // POST: req.body
 // PARAMETROS DA URL: req.params
@@ -17,61 +22,60 @@ const cors = require('cors');
 // JSON: res.json
 const router = express.Router();
 
-//router.get("/", homeController.index);
-router.get("/", cors(), homeController.index);
+//MODOS DO SISTEMA
+router.get("/", cors(corsOptions), homeController.index);
 
-router.get("/admin", adminRoute);
+router.get("/admin", cors(corsOptions), adminRoute);
 
-router.get("/showName", userController.showName);
-
-router.get("/users/login", userController.login);
+//LOGIN
+router.get("/users/login", cors(corsOptions), userController.login);
 
 //ROTA CRUD ALUNOS
 
-router.post("/alunos/addAluno", alunoController.addAluno);
+router.post("/alunos/addAluno", cors(corsOptions), alunoController.addAluno);
 
-router.get("/alunos/getAllAlunos", alunoController.getAllAlunos);
+router.get("/alunos/getAllAlunos", cors(corsOptions), alunoController.getAllAlunos);
 
-router.get("/alunos/getOneAluno", alunoController.getOneAluno);
+router.get("/alunos/getOneAluno", cors(corsOptions), alunoController.getOneAluno);
 
-router.put("/alunos/updateAluno", alunoController.updateAluno);
+router.put("/alunos/updateAluno", cors(corsOptions), alunoController.updateAluno);
 
-router.delete("/alunos/deleteAluno", alunoController.deleteAluno);
+router.delete("/alunos/deleteAluno", cors(corsOptions), alunoController.deleteAluno);
 
 //ROTA CRUD PROFESSORES
 
-router.post("/professores/addProfessor", professorController.addProfessor);
+router.post("/professores/addProfessor", cors(corsOptions), professorController.addProfessor);
 
-router.get("/professores/getAllProfessores", professorController.getAllProfessores);
+router.get("/professores/getAllProfessores", cors(corsOptions), professorController.getAllProfessores);
 
-router.get("/professores/getOneProfessor", professorController.getOneProfessor);
+router.get("/professores/getOneProfessor", cors(corsOptions), professorController.getOneProfessor);
 
-router.put("/professores/updateProfessor", professorController.updateProfessor);
+router.put("/professores/updateProfessor", cors(corsOptions), professorController.updateProfessor);
 
-router.delete("/professores/deleteProfessor", professorController.deleteProfessor);
+router.delete("/professores/deleteProfessor", cors(corsOptions), professorController.deleteProfessor);
 
 //ROTA CRUD FUNCIONÁRIOS
 
-router.post("/funcionarios/addFuncionario", funcionarioController.addFuncionario);
+router.post("/funcionarios/addFuncionario", cors(corsOptions), funcionarioController.addFuncionario);
 
-router.get("/funcionarios/getAllFuncionarios", funcionarioController.getAllFuncionarios);
+router.get("/funcionarios/getAllFuncionarios", cors(corsOptions), funcionarioController.getAllFuncionarios);
 
-router.get("/funcionarios/getOneFuncionario", funcionarioController.getOneFuncionario);
+router.get("/funcionarios/getOneFuncionario", cors(corsOptions), funcionarioController.getOneFuncionario);
 
-router.put("/funcionarios/updateFuncionario", funcionarioController.updateFuncionario);
+router.put("/funcionarios/updateFuncionario", cors(corsOptions), funcionarioController.updateFuncionario);
 
-router.delete("/funcionarios/deleteFuncionario", funcionarioController.deleteFuncionario);
+router.delete("/funcionarios/deleteFuncionario", cors(corsOptions), funcionarioController.deleteFuncionario);
 
 //ROTA CRUD AULA
 
-router.post("/aula/addAula", aulaController.addAula);
+router.post("/aula/addAula", cors(corsOptions), aulaController.addAula);
 
-router.get("/aula/getAllAulas", aulaController.getAllAulas);
+router.get("/aula/getAllAulas", cors(corsOptions), aulaController.getAllAulas);
 
-router.get("/aula/getOneAula", aulaController.getOneAula);
+router.get("/aula/getOneAula", cors(corsOptions), aulaController.getOneAula);
 
-router.put("/aula/updateAula", aulaController.updateAula);
+router.put("/aula/updateAula", cors(corsOptions), aulaController.updateAula);
 
-router.delete("/aula/deleteAula", aulaController.deleteAula);
+router.delete("/aula/deleteAula", cors(corsOptions), aulaController.deleteAula);
 
 module.exports = router;

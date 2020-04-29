@@ -2,7 +2,6 @@
 const app = require("./app");
 require('dotenv').config({ path: "variables.env" });
 const mongoose = require("mongoose");
-const cors = require('cors')
 
 //CONNECTION TO DATA BASE
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -16,7 +15,6 @@ mongoose.connection.on('error', (error) => {
 const posts = new Posts({ name: 'Terceiro post com sucesso' });
 posts.save().then(() => console.log('O post foi salvo com sucesso!'));
  */
-app.use(cors());
 
 //SET SERVER PORT
 app.set("port", process.env.PORT || 3000);

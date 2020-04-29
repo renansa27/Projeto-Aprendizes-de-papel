@@ -7,9 +7,9 @@
       <v-tab>
         <v-icon class="icon">people_alt</v-icon>Dados dos responsáveis
       </v-tab>
-      <v-tab>
+      <!--       <v-tab>
         <v-icon class="icon">contact_phone</v-icon>Endereço e Contato
-      </v-tab>
+      </v-tab>-->
       <v-tab>
         <v-icon class="icon">attach_money</v-icon>Financeiro
       </v-tab>
@@ -20,14 +20,21 @@
             <div class="div-input-text">
               <v-text-field
                 :rules="[v => !!v || 'Item is required']"
-                class="input-text"
-                v-model="contrato"
-                label="Contrato Nº"
+                class="input-text-nome"
+                v-model="nome"
+                label="Nome do aluno"
+                required
+              ></v-text-field>
+              <v-text-field
+                :rules="[v => !!v || 'Item is required']"
+                class="input-text-data"
+                v-model="nascimento"
+                label="Data de nascimento"
                 required
               ></v-text-field>
               <v-select
-                class="input-text"
-                v-model="selectAno"
+                class="input-text-data"
+                v-model="serie"
                 :items="ano"
                 :rules="[v => !!v || 'Item is required']"
                 label="Ano"
@@ -39,9 +46,9 @@
               <v-text-field
                 :rules="[v => !!v || 'Item is required']"
                 class="input-text"
-                v-model="name"
-                label="Aluno"
-                required
+                v-model="idade"
+                label="Idade"
+                outlined
               ></v-text-field>
               <v-select
                 class="input-text"
@@ -102,23 +109,50 @@
 export default {
   name: "Cadastro",
   data: () => ({
-    contrato: null,
-    ano: null,
-    name: null,
+    //Dados do aluno
+    nome: null,
+    nascimento: null,
+    nacionalidade: null,
+    cidadeNascimento: null,
+    ufNascimento: null,
+    //idade: null,
+    sexo: null,
+    tipoSanguineo: null,
+    cpf: null,
+    especial: null,
+    emailAluno: null,
+
+    //Dados RG
+    rg: null,
+    orgaoEmissor: null,
+    dataEmissao: null,
+
+    //Dados Pais
+    nomePai: null,
+    rgPai: null,
+    nomeMae: null,
+    rgMae: null,
+
+    //Contatos Pais
+    telefonePai: null,
+    emailPai: null,
+    telefoneMae: null,
+    emailMae: null,
+
+    //Dados na escola
+    mensalidade: null,
+    matricula: null,
+    serie: null,
     turma: null,
     turno: null,
-    email: null,
-    cpf: null,
-    nascimento: null,
-    rg: null,
-    selectSexo: null,
-    selectTurno: null,
+
+    //Select options
     sexos: ["Masculino", "Feminino"],
-    turno: ["M", "T"],
+    turno: ["Manhã", "Tarde"],
     ano: [
       "Creche",
       "Pré-Escola",
-      "1º EF ",
+      "1º EF",
       "2º EF",
       "3º EF",
       "4º EF",
@@ -156,6 +190,16 @@ export default {
   justify-content: space-evenly;
   align-items: stretch;
   width: 100%;
+}
+.input-text-nome {
+  width: 800px;
+  margin-right: 70px;
+  margin-left: 70px;
+}
+.input-text-data {
+  width: 250px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 .input-text {
   width: 400px;

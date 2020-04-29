@@ -5,7 +5,7 @@
         <span class="display-1">Dia {{date}}</span>
       </v-layout>-->
       <v-layout justify-center>
-        <span class="headline">Aulas do dia: {{info}}</span>
+        <span class="headline">Aulas do dia:</span>
       </v-layout>
       <div class="rowDay">
         <div class="tamSelect">
@@ -55,7 +55,6 @@ export default {
   },
   data() {
     return {
-      info: "Teste",
       date: "",
       nextClass: "",
       selectedAno: "1º EF ",
@@ -131,10 +130,7 @@ export default {
     try {
       axios
         .get("http://192.168.0.10:7777/")
-        .then(response => (this.info = response.data))
-        .then(() => {
-          console.log(this.info);
-        });
+        .then(response => (this.info = response.data));
     } catch (e) {
       console.log("Erro: ", e);
     }
